@@ -1,4 +1,4 @@
-"""Snl grammar for tree-sitter"""
+"""tree-sitter grammar for the EPICS Sequencer's SNL files"""
 
 from importlib.resources import files as _files
 

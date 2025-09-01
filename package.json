@@ -1,11 +1,12 @@
 {
   "name": "tree-sitter-snl",
   "version": "0.1.0",
-  "description": "Snl grammar for tree-sitter",
+  "description": "tree-sitter grammar for the EPICS Sequencer's SNL files",
   "repository": "https://github.com/minijackson/tree-sitter-snl",
   "license": "MIT",
   "author": {
-    "name": "Rémi NICOLE"
+    "name": "Rémi NICOLE",
+    "email": "remi.nicole@cea.fr"
   },
   "main": "bindings/node",
   "types": "bindings/node",
@@ -13,6 +14,8 @@
     "incremental",
     "parsing",
     "tree-sitter",
+    "epics",
+    "sequencer",
     "snl"
   ],
   "files": [

@@ -6,10 +6,12 @@
       "path": ".",
       "scope": "source.snl",
       "file-types": [
-        "snl"
+        "st",
+        "stt"
       ],
       "injection-regex": "^snl$",
-      "highlights": "queries/highlights.scm"
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm"
     }
   ],
   "metadata": {
@@ -18,9 +20,11 @@
     },
     "version": "0.1.0",
     "license": "MIT",
+    "description": "tree-sitter grammar for the EPICS Sequencer's SNL files",
     "authors": [
       {
-        "name": "Rémi NICOLE"
+        "name": "Rémi NICOLE",
+        "email": "remi.nicole@cea.fr"
       }
     ]
   }

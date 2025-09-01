@@ -1,6 +1,6 @@
 /**
- * @file Snl grammar for tree-sitter
- * @author Rémi NICOLE
+ * @file tree-sitter grammar for the EPICS Sequencer's SNL files
+ * @author Rémi NICOLE <remi.nicole@cea.fr>
  * @license MIT
  */
 
@@ -11,7 +11,7 @@ module.exports = grammar({
   name: "snl",
 
   rules: {
-    // NOTE: add the actual grammar rules
-    changeme: $ => "",
+    // TODO: add the actual grammar rules
+    source_file: $ => "hello"
   }
 });

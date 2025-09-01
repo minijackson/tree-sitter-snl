@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-snl
         VERSION "0.1.0"
-        DESCRIPTION "Snl grammar for tree-sitter"
+        DESCRIPTION "tree-sitter grammar for the EPICS Sequencer's SNL files"
         HOMEPAGE_URL "https://github.com/minijackson/tree-sitter-snl"
         LANGUAGES C)
 
