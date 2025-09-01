@@ -3,16 +3,16 @@
 [![CI][ci]](https://github.com/minijackson/tree-sitter-snl/actions/workflows/ci.yml)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
 [![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
-<!-- NOTE: uncomment these if you're publishing packages: -->
-<!-- [![npm][npm]](https://www.npmjs.com/package/tree-sitter-snl) -->
-<!-- [![crates][crates]](https://crates.io/crates/tree-sitter-snl) -->
-<!-- [![pypi][pypi]](https://pypi.org/project/tree-sitter-snl/) -->
+[![npm][npm]](https://www.npmjs.com/package/tree-sitter-snl)
+[![crates][crates]](https://crates.io/crates/tree-sitter-snl)
+[![pypi][pypi]](https://pypi.org/project/tree-sitter-snl/)
 
-A Tree-sitter parser for snl files.
+A Tree-sitter parser for the EPICS Sequencer's SNL files.
 
 ## References
 
-<!-- NOTE: add the grammar's references here -->
+- [The EPICS Sequencer](https://epics-modules.github.io/sequencer/index.html)
+- [SNL specifications](https://epics-modules.github.io/sequencer/Reference.html)
 
 [ci]: https://img.shields.io/github/actions/workflow/status/minijackson/tree-sitter-snl/ci.yml?logo=github&label=CI
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
