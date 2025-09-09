@@ -1,1 +1,1 @@
-(c_code) @injection.content (#set! injection.language c)
+((c_code) @injection.content (#set! injection.language "c"))
