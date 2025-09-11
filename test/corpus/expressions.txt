@@ -20,7 +20,7 @@ ss a { state a {} }
    (block
     (statement (number_literal))
     (statement (char_literal))
-    (statement (string_literal))
+    (statement (string_literal (string_content)))
     (statement (identifier))))
   (state_set
    (identifier)

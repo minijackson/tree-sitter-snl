@@ -219,7 +219,7 @@ module.exports = grammar({
         repeat(
           choice(
             $.parameter_expansion,
-            token.immediate(prec(1, /[^\{\\"\n]+/)),
+            alias(token.immediate(prec(1, /[^\{\\"\n]+/)), $.string_content),
             $.escape_sequence
           )
         ),
@@ -490,7 +490,10 @@ module.exports = grammar({
       seq(
         choice('L"', 'u"', 'U"', 'u8"', '"'),
         repeat(
-          choice(token.immediate(prec(1, /[^\\"\n]+/)), $.escape_sequence)
+          choice(
+            alias(token.immediate(prec(1, /[^\\"\n]+/)), $.string_content),
+            $.escape_sequence
+          )
         ),
         '"'
       ),

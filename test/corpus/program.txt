@@ -26,7 +26,7 @@ ss b { state c {} }
 (source_file
  (program
   (identifier)
-  (program_param (string_literal))
+  (program_param (string_literal (string_content)))
   (state_set
    (identifier)
    (state (identifier) (state_block)))))
@@ -76,12 +76,12 @@ ss b { state c {} }
  (program
   (identifier)
   (initial_defn
-   (assign (identifier) (string_literal)))
+   (assign (identifier) (string_literal (string_content))))
   (initial_defn
    (assign
     (identifier)
     (subscript (number_literal))
-    (string_literal)))
+    (string_literal (string_content))))
   (state_set
    (identifier)
    (state (identifier) (state_block)))))
