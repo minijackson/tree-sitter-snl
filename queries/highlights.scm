@@ -120,4 +120,11 @@
 
 (identifier) @variable
 
+(preproc_def
+  name: (_) @constant)
+(preproc_call
+  directive: (preproc_directive) @_u
+  argument: (_) @constant
+  (#eq? @_u "#undef"))
+
 (comment) @comment

@@ -36,19 +36,32 @@ module.exports = grammar({
 
   extras: ($) => [/\s/, $.comment],
 
+  conflicts: $ => [
+    [$._block_defn_item, $._statement_item],
+    [$.preproc_ifdef_in_block_defns, $.preproc_ifdef_in_block_statements],
+    [$.preproc_if_in_block_defns, $.preproc_if_in_block_statements],
+    [$.preproc_else_in_block_defns, $.preproc_else_in_block_statements],
+    [$.preproc_elif_in_block_defns, $.preproc_elif_in_block_statements],
+  ],
+
   rules: {
     source_file: ($) => repeat($._top_level_item),
 
     _top_level_item: ($) =>
       choice(
+        $._preproc,
         $.preproc_if,
         $.preproc_ifdef,
+        $.program
+      ),
+
+    _preproc: ($) =>
+      choice(
         $.preproc_include,
         $.preproc_def,
         $.preproc_function_def,
         $.preproc_call,
         $.line_marker,
-        $.program
       ),
 
     _c_code: ($) =>
@@ -79,8 +92,12 @@ module.exports = grammar({
       ),
 
     program_param: ($) => seq("(", $.string_literal, ")"),
-    initial_defn: ($) =>
+    initial_defn: ($) => $._initial_defn_item,
+    _initial_defn_item: ($) =>
       choice(
+        $._preproc,
+        alias($.preproc_if_in_initial_defns, $.preproc_if),
+        alias($.preproc_ifdef_in_initial_defns, $.preproc_ifdef),
         $.assign,
         $.monitor,
         $.sync,
@@ -291,9 +308,20 @@ module.exports = grammar({
       ),
 
     block: ($) => seq("{", repeat($.block_defn), repeat($.statement), "}"),
-    block_defn: ($) => choice($.declaration, prec(1, $._c_code)),
-    statement: ($) =>
+    block_defn: ($) => $._block_defn_item,
+    _block_defn_item: ($) => choice(
+      $._preproc,
+      alias($.preproc_if_in_block_defns, $.preproc_if),
+      alias($.preproc_ifdef_in_block_defns, $.preproc_ifdef),
+      $.declaration,
+      prec(1, $._c_code),
+    ),
+    statement: ($) => $._statement_item,
+    _statement_item: ($) =>
       choice(
+        $._preproc,
+        alias($.preproc_if_in_block_statements, $.preproc_if),
+        alias($.preproc_ifdef_in_block_statements, $.preproc_ifdef),
         $.break_statement,
         $.continue_statement,
         $._c_code,
@@ -603,6 +631,9 @@ module.exports = grammar({
       ),
 
     ...preprocIf("", ($) => $._top_level_item),
+    ...preprocIf("_in_initial_defns", ($) => $._initial_defn_item),
+    ...preprocIf("_in_block_defns", ($) => $._block_defn_item),
+    ...preprocIf("_in_block_statements", ($) => $._statement_item),
 
     preproc_directive: ($) => /#[ \t]*[a-zA-Z]\w*/,
     preproc_arg: ($) => token(prec(-1, repeat1(/.|\\\r?\n/))),
