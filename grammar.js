@@ -301,6 +301,8 @@ module.exports = grammar({
         $.if_statement,
         $.while_statement,
         $.for_statement,
+        $.state_statement,
+        $.return_statement,
         seq($._comma_expr, ";")
       ),
     break_statement: ($) => seq("break", ";"),
@@ -337,8 +339,8 @@ module.exports = grammar({
         ")",
         field("body", $.statement)
       ),
-    state_statement: ($) => seq("state", field("name", $.identifier)),
-    return_statement: ($) => seq("return", optional($._comma_expr)),
+    state_statement: ($) => seq("state", field("name", $.identifier), ";"),
+    return_statement: ($) => seq("return", optional($._comma_expr), ";"),
 
     _expr: ($) =>
       choice(
@@ -352,6 +354,7 @@ module.exports = grammar({
         prec.left($.subscript_expression),
         prec.left($.field_expression),
         $.update_expression,
+        $.pointer_expression,
         $.unary_expression,
         $.binary_expression,
         $.conditional_expression,

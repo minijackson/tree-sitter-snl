@@ -1855,6 +1855,14 @@
           "name": "for_statement"
         },
         {
+          "type": "SYMBOL",
+          "name": "state_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "return_statement"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -2089,6 +2097,10 @@
             "type": "SYMBOL",
             "name": "identifier"
           }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -2110,6 +2122,10 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -2167,6 +2183,10 @@
         {
           "type": "SYMBOL",
           "name": "update_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pointer_expression"
         },
         {
           "type": "SYMBOL",
