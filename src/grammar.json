@@ -430,19 +430,28 @@
       ]
     },
     "member_decl": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "basetype"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "basetype"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "declarator"
+            },
+            {
+              "type": "STRING",
+              "value": ";"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
-          "name": "declarator"
-        },
-        {
-          "type": "STRING",
-          "value": ";"
+          "name": "_c_code"
         }
       ]
     },

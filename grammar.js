@@ -123,7 +123,10 @@ module.exports = grammar({
         ";"
       ),
     field_declaration_list: ($) => seq("{", repeat($.member_decl), "}"),
-    member_decl: ($) => seq($.basetype, $.declarator, ";"),
+    member_decl: ($) => choice(
+      seq($.basetype, $.declarator, ";"),
+      $._c_code,
+    ),
 
     declaration: ($) => seq($.basetype, commaSep($.init_declarator), ";"),
     init_declarator: ($) => seq($.declarator, optional(seq("=", $.init_expr))),

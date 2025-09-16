@@ -2449,10 +2449,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "basetype",
+          "named": true
+        },
+        {
+          "type": "c_code",
           "named": true
         },
         {
