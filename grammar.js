@@ -91,7 +91,7 @@ module.exports = grammar({
         repeat($.final_defn)
       ),
 
-    program_param: ($) => seq("(", $.string_literal, ")"),
+    program_param: ($) => seq("(", $._string, ")"),
     initial_defn: ($) => $._initial_defn_item,
     _initial_defn_item: ($) =>
       choice(
@@ -377,7 +377,7 @@ module.exports = grammar({
       choice(
         $.number_literal,
         $.char_literal,
-        $.string_literal,
+        $._string,
         $.identifier,
         $.parenthesized_expression,
         $.call_expression,
@@ -519,6 +519,24 @@ module.exports = grammar({
 
     // Taken from:
     // https://github.com/tree-sitter/tree-sitter-c/blob/master/grammar.js
+
+    _string: $ =>
+      prec.left(choice(
+        $.string_literal,
+        $.concatenated_string,
+      )),
+
+    // Must concatenate at least 2 nodes, one of which must be a string_literal.
+    // Identifier is added to parse macros that are strings, like PRIu64.
+    concatenated_string: $ =>
+      prec.right(seq(
+        choice(
+          seq($.identifier, $.string_literal),
+          seq($.string_literal, $.string_literal),
+          seq($.string_literal, $.identifier),
+        ),
+        repeat(choice($.string_literal, $.identifier)),
+      )),
 
     string_literal: ($) =>
       seq(

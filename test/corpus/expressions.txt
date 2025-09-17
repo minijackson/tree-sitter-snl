@@ -7,6 +7,7 @@ entry {
     1;
     'a';
     "a";
+    "a" "b";
     a;
 }
 ss a { state a {} }
@@ -21,6 +22,10 @@ ss a { state a {} }
     (statement (number_literal))
     (statement (char_literal))
     (statement (string_literal (string_content)))
+    (statement
+	 (concatenated_string
+	  (string_literal (string_content))
+	  (string_literal (string_content))))
     (statement (identifier))))
   (state_set
    (identifier)
