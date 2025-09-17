@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-snl",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "tree-sitter grammar for the EPICS Sequencer's SNL files",
   "repository": "https://github.com/minijackson/tree-sitter-snl",
   "license": "MIT",
